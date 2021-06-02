@@ -5,6 +5,7 @@
  */
 package view;
 
+import crud.Insert;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -43,7 +44,10 @@ public class Tb_estado extends javax.swing.JFrame {
     }
     
     private void callInsert() {
-        
+        String sql = "INSERT INTO estado(codest, nome) VALUES (?, ?);";
+        Insert insert = new Insert();
+        insert.insertDataBaseEstado(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), sql);
+        jLabel4.setText("Estado cadastrado com sucesso!");
     }
     
 

@@ -11,6 +11,7 @@ public class Submenu extends javax.swing.JFrame {
     
     public Submenu() {
         initComponents();
+        back();
     }
     
     public Submenu(int table) {
@@ -36,15 +37,16 @@ public class Submenu extends javax.swing.JFrame {
         });            
     }
     
-        private void back() {
-            jButton2.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent ae) {
-                   setVisible(false);
-                   new Menu().setVisible(true);
-                }
-            });            
+    private void back() {
+        jButton4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               setVisible(false);
+               new Menu().setVisible(true);
+            }
+        });
     }
+
     
 
     @SuppressWarnings("unchecked")

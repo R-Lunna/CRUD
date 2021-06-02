@@ -66,10 +66,10 @@ public class Insert {
         }
     }
     
-    public void insertDataBaseProjeto(int codproj, String nome, int codempresa, String sql) {
+    public void insertDataBaseProjeto(String codproj, String nome, int codempresa, String sql) {
         try {
             stm = database.prepareStatement(sql);
-            stm.setInt(1, codproj);
+            stm.setString(1, codproj);
             stm.setString(2, nome);
             stm.setInt(3, codempresa);
             stm.execute();
@@ -79,11 +79,11 @@ public class Insert {
         }
     }
     
-    public void insertDataBaseAlocacao(int codemp, int codproj, int qtdhoras, String sql) {
+    public void insertDataBaseAlocacao(int codemp, String codproj, int qtdhoras, String sql) {
         try {
             stm = database.prepareStatement(sql);
             stm.setInt(1, codemp);
-            stm.setInt(2, codproj);
+            stm.setString(2, codproj);
             stm.setInt(3, qtdhoras);
             stm.execute();
             stm.close();
