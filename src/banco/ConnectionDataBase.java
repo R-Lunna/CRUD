@@ -18,40 +18,56 @@ public class ConnectionDataBase {
     private static String user;
     private static String password;
     
-    private static Connection con = null;
+    private static Connection connection = null;
     
     private ConnectionDataBase() {
     }
 
     public static void setUrl(String url)
+    throws NullPointerException
     {
+        if( url == null )
+            throw new NullPointerException("Url cannot be null");
+        
         ConnectionDataBase.url = url;
     }
 
     public static void setUser(String user)
+    throws NullPointerException
     {
+        if( url == null )
+            throw new NullPointerException("Url cannot be null");
+        
         ConnectionDataBase.user = user;
     }
 
     public static void setPassword(String password)
+    throws NullPointerException
     {
+        if( url == null )
+            throw new NullPointerException("Url cannot be null");
+        
         ConnectionDataBase.password = password;
     }
     
     public static Connection getConnection() 
     {
         
-        if (con == null) {
+        if (connection == null) {
             
-            try {
-                con = DriverManager.getConnection(url, user, password);
+            try 
+            {
+                connection = DriverManager.getConnection(url, user, password);
                 System.out.println("Connection Success");
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
+            } 
+            catch (SQLException e) 
+            {
+                System.out.println("Error creating database connection: " + e.getMessage());
+                System.exit(1);
             }
         }  
         
-        return con;
+        return connection;
     }
  
 }
