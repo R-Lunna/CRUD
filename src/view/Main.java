@@ -33,8 +33,8 @@ public class Main extends javax.swing.JFrame {
                 ConnectionDataBase.setUser( jTextField2.getText() );
                 ConnectionDataBase.setPassword(password);
                
-                setVisible(false);
-                new Menu().setVisible(true);
+                setVisible(false);              
+                new Menu().setVisible(true);              
             }         
         });
     }
