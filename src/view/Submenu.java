@@ -7,11 +7,21 @@ import view.cidade.ViewCidadeInsert;
 import view.alocacao.ViewAlocacaoInsert;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.alocacao.ViewAlocacaoDelete;
 import view.alocacao.ViewAlocacaoRead;
+import view.alocacao.ViewAlocacaoUpdate;
+import view.cidade.ViewCidadeDelete;
 import view.cidade.ViewCidadeRead;
+import view.cidade.ViewCidadeUpdate;
+import view.empregado.ViewEmpregadoDelete;
 import view.empregado.ViewEmpregadoRead;
+import view.empregado.ViewEmpregadoUpdate;
+import view.estado.ViewEstadoDelete;
 import view.estado.ViewEstadoRead;
+import view.estado.ViewEstadoUpdate;
+import view.projeto.ViewProjetoDelete;
 import view.projeto.ViewProjetoRead;
+import view.projeto.ViewProjetoUpdate;
 
 /**
  *
@@ -28,6 +38,8 @@ public class Submenu extends javax.swing.JFrame {
         initComponents();
         insert(table);
         read(table);
+        delete(table);
+        update(table);
         back();
     }
     
@@ -65,6 +77,48 @@ public class Submenu extends javax.swing.JFrame {
             }
         });  
     }
+    
+    
+    
+    
+    
+    private void delete( int table )
+    {
+            jButton3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               setVisible(false);
+               
+               switch(table){
+                case 1: new ViewEmpregadoDelete().setVisible(true); break;
+                case 2: new ViewCidadeDelete().setVisible(true); break;
+                case 3: new ViewEstadoDelete().setVisible(true); break;
+                case 4: new ViewProjetoDelete().setVisible(true); break;
+                case 5: new ViewAlocacaoDelete().setVisible(true); break;
+               
+           }
+            }
+        });  
+    }
+
+    
+    private void update(int table){
+        jButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               setVisible(false);
+               
+               switch(table){
+                case 1: new ViewEmpregadoUpdate().setVisible(true); break;
+                case 2: new ViewCidadeUpdate().setVisible(true); break;
+                case 3: new ViewEstadoUpdate().setVisible(true); break;
+                case 4: new ViewProjetoUpdate().setVisible(true); break;
+                case 5: new ViewAlocacaoUpdate().setVisible(true); break;
+           }
+            }
+        });  
+    }
+    
     
     private void back() {
         jButton4.addActionListener(new ActionListener() {
