@@ -12,7 +12,7 @@ public class Alocacao extends Table
 {
     private int codEmp = -1;
     private int lastID = -1;
-    private String codProj;
+    private String codProj = "";
     private String lastID2 = "";
     private int qtdHoras;
 
@@ -84,7 +84,7 @@ public class Alocacao extends Table
     @Override
     public void update()
     {
-        try(PreparedStatement preparedStatement = connection.prepareStatement("UPDATE alocacao set codemp = ?, codproj = ?, qtdhoras = ? WHERE codemp = ? AND qtdhoras = ?"))
+        try(PreparedStatement preparedStatement = connection.prepareStatement("UPDATE alocacao set codemp = ?, codproj = ?, qtdhoras = ? WHERE codemp = ? AND codproj = ?"))
         {
             preparedStatement.setInt(1, codEmp);           
             preparedStatement.setString(2, codProj);

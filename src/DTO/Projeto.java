@@ -65,7 +65,7 @@ public class Projeto extends Table
     @Override
     public void insert()
     {
-        try( PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO projeto(codproj, nome, codeempresa) VALUES (?, ?, ?);"))
+        try( PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO projeto(codproj, nome, codempresa) VALUES (?, ?, ?);"))
         {
             preparedStatement.setString(1, codProj);
             preparedStatement.setString(2, nome);
@@ -80,7 +80,7 @@ public class Projeto extends Table
     @Override
     public void update()
     {
-        try( PreparedStatement preparedStatement = connection.prepareStatement("UPDATE projeto set codproj = ?, nome = ?, codeempresa = ? WHERE codproj = ?"))
+        try( PreparedStatement preparedStatement = connection.prepareStatement("UPDATE projeto set codproj = ?, nome = ?, codempresa = ? WHERE codproj = ?"))
         {
             preparedStatement.setString(1, codProj);           
             preparedStatement.setString(2, nome);

@@ -67,7 +67,7 @@ public class Cidade extends Table
     @Override
     public void update()
     {
-            try(PreparedStatement preparedStatement = connection.prepareStatement("UPDATE cidade set codcid = ?, nome = ?, codest = ? WHERE codest = ?"))
+            try(PreparedStatement preparedStatement = connection.prepareStatement("UPDATE cidade set codcid = ?, nome = ?, codest = ? WHERE codcid = ?"))
         {
             preparedStatement.setInt(1, codCid);           
             preparedStatement.setString(2, nome);
