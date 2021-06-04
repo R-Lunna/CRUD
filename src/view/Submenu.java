@@ -1,5 +1,10 @@
 package view;
 
+import view.projeto.ViewProjetoInsert;
+import view.estado.ViewEstadoInsert;
+import view.empregado.ViewEmpregadoInsert;
+import view.cidade.ViewCidadeInsert;
+import view.alocacao.ViewAlocacaoInsert;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,11 +32,11 @@ public class Submenu extends javax.swing.JFrame {
                setVisible(false);
                
                switch (table) {
-                   case 1: new Tb_empregado().setVisible(true); break;
-                   case 2: new Tb_cidade().setVisible(true); break;
-                   case 3: new Tb_estado().setVisible(true); break;
-                   case 4: new Tb_projeto().setVisible(true); break;
-                   case 5: new Tb_alocacao().setVisible(true); break;
+                   case 1: new ViewEmpregadoInsert().setVisible(true); break;
+                   case 2: new ViewCidadeInsert().setVisible(true); break;
+                   case 3: new ViewEstadoInsert().setVisible(true); break;
+                   case 4: new ViewProjetoInsert().setVisible(true); break;
+                   case 5: new ViewAlocacaoInsert().setVisible(true); break;
                }
             }
         });            

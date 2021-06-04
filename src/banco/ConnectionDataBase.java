@@ -22,12 +22,24 @@ public class ConnectionDataBase {
     
     private ConnectionDataBase() {
     }
-       
-    public static Connection getConnection(String url, String user, String password) {
-        
+
+    public static void setUrl(String url)
+    {
         ConnectionDataBase.url = url;
+    }
+
+    public static void setUser(String user)
+    {
         ConnectionDataBase.user = user;
+    }
+
+    public static void setPassword(String password)
+    {
         ConnectionDataBase.password = password;
+    }
+    
+    public static Connection getConnection() 
+    {
         
         if (con == null) {
             
@@ -37,7 +49,8 @@ public class ConnectionDataBase {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
-        }         
+        }  
+        
         return con;
     }
  

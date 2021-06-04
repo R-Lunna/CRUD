@@ -3,29 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.empregado;
 
-import banco.ConnectionDataBase;
-import crud.Insert;
+import DTO.Empregado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.sql.PreparedStatement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import view.Submenu;
+
 
 /**
  *
  * @author Rafael Luna
  */
-public class Tb_empregado extends javax.swing.JFrame {
+public class ViewEmpregadoInsert extends javax.swing.JFrame {
     private PreparedStatement stm = null;
     
     /**
      * Creates new form Create
      */
-    public Tb_empregado() {
+    public ViewEmpregadoInsert() {
         initComponents();
         confirm();
         menu();
@@ -45,18 +42,22 @@ public class Tb_empregado extends javax.swing.JFrame {
         jButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                callInsert();
+               
+                Empregado empregado = new Empregado();
+                
+                empregado.setCodEmp(Integer.parseInt(jTextField1.getText())); 
+                empregado.setCodProf(Integer.parseInt(jTextField3.getText()));
+                empregado.setNome(jTextField2.getText());
+                
+                empregado.insert();
+                
+                jLabel5.setText("Registro armazenado com sucesso!!");
             }
             
         });
     }
     
-    private void callInsert(){
-        String sql = "INSERT INTO empregado(codemp, nome, codprof) VALUES (?, ?, ?);";
-        Insert insert = new Insert();
-        insert.InsertDataBaseEmpregado(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), Integer.parseInt(jTextField3.getText()), sql);
-        jLabel5.setText("Empregado cadastrado com sucesso!!");
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,7 +66,8 @@ public class Tb_empregado extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -86,8 +88,10 @@ public class Tb_empregado extends javax.swing.JFrame {
 
         jLabel2.setText("Código do empregado:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jTextField1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jTextField1ActionPerformed(evt);
             }
         });
@@ -96,14 +100,18 @@ public class Tb_empregado extends javax.swing.JFrame {
 
         jLabel4.setText("Código da profissão:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jTextField2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jTextField2ActionPerformed(evt);
             }
         });
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jTextField3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jTextField3ActionPerformed(evt);
             }
         });
@@ -204,14 +212,18 @@ public class Tb_empregado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tb_empregado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewEmpregadoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tb_empregado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewEmpregadoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tb_empregado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewEmpregadoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tb_empregado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewEmpregadoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -220,7 +232,7 @@ public class Tb_empregado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tb_empregado().setVisible(true);
+                new ViewEmpregadoInsert().setVisible(true);
             }
         });
     }

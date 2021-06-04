@@ -6,10 +6,8 @@
 package view;
 
 import banco.ConnectionDataBase;
-import crud.Insert;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 
 /**
  *
@@ -29,10 +27,12 @@ public class Main extends javax.swing.JFrame {
         jButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                String password = new String(jPasswordField1.getPassword());            
-                Connection database = ConnectionDataBase.getConnection(jTextField1.getText().toString(), jTextField2.getText().toString(), password);
-                new Insert(database);
+                String password = new String(jPasswordField1.getPassword()); 
                 
+                ConnectionDataBase.setUrl( jTextField1.getText() );
+                ConnectionDataBase.setUser( jTextField2.getText() );
+                ConnectionDataBase.setPassword(password);
+               
                 setVisible(false);
                 new Menu().setVisible(true);
             }         

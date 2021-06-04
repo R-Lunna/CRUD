@@ -3,22 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.estado;
 
+import DTO.Estado;
 import crud.Insert;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.Submenu;
 
 /**
  *
  * @author Rafael Luna
  */
-public class Tb_estado extends javax.swing.JFrame {
+public class ViewEstadoInsert extends javax.swing.JFrame {
 
     /**
      * Creates new form Tb_estado
      */
-    public Tb_estado() {
+    public ViewEstadoInsert() {
         initComponents();
         confirm();
         back();
@@ -28,7 +30,16 @@ public class Tb_estado extends javax.swing.JFrame {
         jButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-               callInsert(); 
+               
+                Estado estado = new Estado();
+                
+                estado.setCodEst(Integer.parseInt(jTextField1.getText()));
+                estado.setNome(jTextField2.getText());
+                
+                estado.insert();
+                
+                jLabel4.setText("Registro armazenado com sucesso!");
+                
             }
         });
     }
@@ -43,14 +54,6 @@ public class Tb_estado extends javax.swing.JFrame {
         });
     }
     
-    private void callInsert() {
-        String sql = "INSERT INTO estado(codest, nome) VALUES (?, ?);";
-        Insert insert = new Insert();
-        insert.insertDataBaseEstado(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), sql);
-        jLabel4.setText("Estado cadastrado com sucesso!");
-    }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,7 +61,8 @@ public class Tb_estado extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -77,8 +81,10 @@ public class Tb_estado extends javax.swing.JFrame {
 
         jLabel3.setText("Nome do estado:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jTextField1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jTextField1ActionPerformed(evt);
             }
         });
@@ -163,20 +169,21 @@ public class Tb_estado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tb_estado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewEstadoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tb_estado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewEstadoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tb_estado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewEstadoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tb_estado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewEstadoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tb_estado().setVisible(true);
+                new ViewEstadoInsert().setVisible(true);
             }
         });
     }
