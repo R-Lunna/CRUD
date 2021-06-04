@@ -15,6 +15,8 @@ public class Estado extends Table
     private int lastID = -1;
     private String nome;
 
+    private Connection connection = ConnectionDataBase.getConnection();
+    
     public Estado()
     {
     }
@@ -49,8 +51,7 @@ public class Estado extends Table
     @Override
     public void insert()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO estado(codest, nome ) VALUES (?, ?);"))
+        try(PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO estado(codest, nome ) VALUES (?, ?);"))
         {
             preparedStatement.setInt(1, codEst);
             preparedStatement.setString(2, nome);
@@ -64,8 +65,7 @@ public class Estado extends Table
     @Override
     public void update()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE estado set codest = ?, nome = ? WHERE codest = ?"))
+        try( PreparedStatement preparedStatement = connection.prepareStatement("UPDATE estado set codest = ?, nome = ? WHERE codest = ?"))
         {
             preparedStatement.setInt(1, codEst);           
             preparedStatement.setString(2, nome);
@@ -85,8 +85,7 @@ public class Estado extends Table
     @Override
     public void delete()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM empregado WHERE codest = ?;"))
+        try(PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM empregado WHERE codest = ?;"))
         {
             preparedStatement.setInt(1, codEst);
             preparedStatement.execute();

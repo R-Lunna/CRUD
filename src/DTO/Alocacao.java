@@ -16,6 +16,8 @@ public class Alocacao extends Table
     private String lastID2 = "";
     private int qtdHoras;
 
+    private Connection connection = ConnectionDataBase.getConnection();
+
     public Alocacao()
     {
     }
@@ -67,8 +69,7 @@ public class Alocacao extends Table
     @Override
     public void insert()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO alocacao(codemp, codproj, qtdhoras) VALUES (?, ?, ?);"))
+        try(PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO alocacao(codemp, codproj, qtdhoras) VALUES (?, ?, ?);"))
         {
             preparedStatement.setInt(1, codEmp);
             preparedStatement.setString(2, codProj);
@@ -83,8 +84,7 @@ public class Alocacao extends Table
     @Override
     public void update()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE alocacao set codemp = ?, codproj = ?, qtdhoras = ? WHERE codemp = ? AND qtdhoras = ?"))
+        try(PreparedStatement preparedStatement = connection.prepareStatement("UPDATE alocacao set codemp = ?, codproj = ?, qtdhoras = ? WHERE codemp = ? AND qtdhoras = ?"))
         {
             preparedStatement.setInt(1, codEmp);           
             preparedStatement.setString(2, codProj);
@@ -113,8 +113,7 @@ public class Alocacao extends Table
     @Override
     public void delete()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM alocacao WHERE codemp = ? AND codproj = ?;"))
+        try(PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM alocacao WHERE codemp = ? AND codproj = ?;"))
         {
             preparedStatement.setInt(1, codEmp);
             preparedStatement.setString(2, codProj);

@@ -15,6 +15,7 @@ public class Cidade extends Table
     private int lastID = -1;
     private String nome;
     private int codEst;
+    private Connection connection = ConnectionDataBase.getConnection();
 
     public int getCodCid()
     {
@@ -51,8 +52,7 @@ public class Cidade extends Table
     @Override
     public void insert()
     {
-         try( Connection connection = ConnectionDataBase.getConnection(); 
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO cidade(codcid, nome, codest) VALUES (?, ?, ?);"))
+         try(PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO cidade(codcid, nome, codest) VALUES (?, ?, ?);"))
         {
             preparedStatement.setInt(1, codCid);
             preparedStatement.setString(2, nome);
@@ -67,8 +67,7 @@ public class Cidade extends Table
     @Override
     public void update()
     {
-            try( Connection connection = ConnectionDataBase.getConnection(); 
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE cidade set codcid = ?, nome = ?, codest = ? WHERE codest = ?"))
+            try(PreparedStatement preparedStatement = connection.prepareStatement("UPDATE cidade set codcid = ?, nome = ?, codest = ? WHERE codest = ?"))
         {
             preparedStatement.setInt(1, codCid);           
             preparedStatement.setString(2, nome);
@@ -89,8 +88,7 @@ public class Cidade extends Table
     @Override
     public void delete()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM cidade WHERE codcid = ?;"))
+        try(PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM cidade WHERE codcid = ?;"))
         {
             preparedStatement.setInt(1, codCid);
             preparedStatement.execute();

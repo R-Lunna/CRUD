@@ -16,6 +16,8 @@ public class Empregado extends Table
     private int codProf;
     
     private int lastID = -1;
+    
+    private Connection connection = ConnectionDataBase.getConnection();
 
     public Empregado()
     {
@@ -64,8 +66,7 @@ public class Empregado extends Table
     @Override
     public void insert()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO empregado(codemp, nome, codprof) VALUES (?, ?, ?);"))
+        try(PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO empregado(codemp, nome, codprof) VALUES (?, ?, ?);"))
         {
             preparedStatement.setInt(1, codEmp);
             preparedStatement.setString(2, nome);
@@ -80,8 +81,7 @@ public class Empregado extends Table
     @Override
     public void update()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE empregado set codemp = ?, nome = ?, codprof = ? WHERE codemp = ?"))
+        try(PreparedStatement preparedStatement = connection.prepareStatement("UPDATE empregado set codemp = ?, nome = ?, codprof = ? WHERE codemp = ?"))
         {
             preparedStatement.setInt(1, codEmp);           
             preparedStatement.setString(2, nome);
@@ -102,8 +102,7 @@ public class Empregado extends Table
     @Override
     public void delete()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM empregado WHERE codemp = ?;"))
+        try(PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM empregado WHERE codemp = ?;"))
         {
             preparedStatement.setInt(1, codEmp);
             preparedStatement.execute();

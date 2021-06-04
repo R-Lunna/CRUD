@@ -16,6 +16,8 @@ public class Projeto extends Table
     private String nome;
     private int codeEmp;
 
+    private Connection connection = ConnectionDataBase.getConnection();
+    
     public Projeto()
     {
     }
@@ -63,8 +65,7 @@ public class Projeto extends Table
     @Override
     public void insert()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO projeto(codproj, nome, codeempresa) VALUES (?, ?, ?);"))
+        try( PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO projeto(codproj, nome, codeempresa) VALUES (?, ?, ?);"))
         {
             preparedStatement.setString(1, codProj);
             preparedStatement.setString(2, nome);
@@ -79,8 +80,7 @@ public class Projeto extends Table
     @Override
     public void update()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE projeto set codproj = ?, nome = ?, codeempresa = ? WHERE codproj = ?"))
+        try( PreparedStatement preparedStatement = connection.prepareStatement("UPDATE projeto set codproj = ?, nome = ?, codeempresa = ? WHERE codproj = ?"))
         {
             preparedStatement.setString(1, codProj);           
             preparedStatement.setString(2, nome);
@@ -101,8 +101,7 @@ public class Projeto extends Table
     @Override
     public void delete()
     {
-        try( Connection connection = ConnectionDataBase.getConnection(); 
-        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM projeto WHERE codproj = ?;"))
+        try( PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM projeto WHERE codproj = ?;"))
         {
             preparedStatement.setString(1, codProj);
             preparedStatement.execute();
