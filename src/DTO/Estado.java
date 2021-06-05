@@ -5,7 +5,10 @@ import banco.ConnectionDataBase;
 import crud.Insert;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -96,8 +99,32 @@ public class Estado extends Table
     }
 
     @Override
-    public void read()
+    public List<Estado> read()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Estado> list = new ArrayList<>();
+        
+        try( PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM estado;") )
+        {
+            preparedStatement.execute();
+            
+            ResultSet resultSet = preparedStatement.getResultSet();
+            
+            while( resultSet.next() )
+            {
+                Estado estado = new Estado();
+                
+                estado.setCodEst(resultSet.getInt("codest"));
+                estado.setNome(resultSet.getString("nome"));
+                
+                list.add(estado);
+            }
+            
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Erro ao criar lista: " + e.getMessage());
+        }
+        
+        return list;
     }
 }

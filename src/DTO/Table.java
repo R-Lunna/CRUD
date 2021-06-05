@@ -1,6 +1,8 @@
 
 package DTO;
 
+import java.util.List;
+
 
 public abstract class Table
 {
@@ -11,7 +13,7 @@ public abstract class Table
     
     public abstract void delete();
     
-    public abstract void read();
+    public abstract List<?> read();
     
     
 }

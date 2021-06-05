@@ -7,6 +7,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import banco.ConnectionDataBase;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Empregado extends Table
@@ -113,9 +116,34 @@ public class Empregado extends Table
     }
 
     @Override
-    public void read()
+    public List<Empregado> read()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Empregado> list = new ArrayList<>();
+        
+        try( PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM empregado;") )
+        {
+            preparedStatement.execute();
+            
+            ResultSet resultSet = preparedStatement.getResultSet();
+            
+            while( resultSet.next() )
+            {
+                Empregado empregado = new Empregado();
+                
+                empregado.setCodEmp( resultSet.getInt("codemp"));
+                empregado.setCodProf( resultSet.getInt("codprof"));
+                empregado.setNome( resultSet.getString("nome"));
+                
+                list.add(empregado);
+            }
+            
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Erro ao criar lista: " + e.getMessage());
+        }
+        
+        return list;
     }
     
 }

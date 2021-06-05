@@ -5,6 +5,15 @@
  */
 package view.estado;
 
+import DTO.Cidade;
+import DTO.Estado;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import view.Submenu;
+
 /**
  *
  * @author Computador
@@ -18,6 +27,37 @@ public class ViewEstadoRead extends javax.swing.JFrame
     public ViewEstadoRead()
     {
         initComponents();
+        fillTable();
+        back();
+    }
+    
+    private void fillTable()
+    {
+        List<Estado> estados = new Estado().read();
+        
+        DefaultTableModel table = (DefaultTableModel) jTable1.getModel();
+        
+        Iterator iterator = estados.iterator();
+        
+        while( iterator.hasNext() )
+        {
+            Estado estado = (Estado) iterator.next();
+            
+            table.addRow( new Object[]{estado.getCodEst(), estado.getNome()});
+        }
+    }
+    
+    private void back()
+    {
+        jButton1.addActionListener( new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                setVisible(false);
+                new Submenu().setVisible(true);
+            }
+        });
     }
 
     /**
@@ -30,20 +70,61 @@ public class ViewEstadoRead extends javax.swing.JFrame
     private void initComponents()
     {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
+
+            },
+            new String []
+            {
+                "codest", "nome"
+            }
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton1.setText("Voltar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -92,5 +173,8 @@ public class ViewEstadoRead extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
