@@ -6,7 +6,6 @@
 package view.cidade;
 
 import DTO.Cidade;
-import crud.Insert;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.JFrameRoot;

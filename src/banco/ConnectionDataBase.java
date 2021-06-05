@@ -8,6 +8,9 @@ package banco;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import view.JFrameRoot;
 
 /**
  *
@@ -62,7 +65,7 @@ public class ConnectionDataBase {
             } 
             catch (SQLException e) 
             {
-                System.out.println("Error creating database connection: " + e.getMessage());
+                JOptionPane.showMessageDialog( new JFrameRoot().getFrame() ,"Error creating database connection", "Error", JOptionPane.ERROR_MESSAGE);
                 System.exit(1);
             }
         }  

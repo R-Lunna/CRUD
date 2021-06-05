@@ -2,15 +2,16 @@
 package DTO;
 
 import banco.ConnectionDataBase;
-import crud.Insert;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
+import view.JFrameRoot;
 
 public class Projeto extends Table
 {
@@ -76,7 +77,7 @@ public class Projeto extends Table
             preparedStatement.execute();
         } catch (SQLException ex) 
         {
-            Logger.getLogger(Insert.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog( new JFrameRoot().getFrame() ,"Error processing query", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -97,7 +98,7 @@ public class Projeto extends Table
             preparedStatement.execute();
         } catch (SQLException ex) 
         {
-            Logger.getLogger(Insert.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog( new JFrameRoot().getFrame() ,"Error processing query", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -110,7 +111,7 @@ public class Projeto extends Table
             preparedStatement.execute();
         } catch (SQLException ex) 
         {
-            Logger.getLogger(Insert.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog( new JFrameRoot().getFrame() ,"Error processing query", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
