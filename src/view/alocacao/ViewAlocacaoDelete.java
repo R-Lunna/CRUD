@@ -8,7 +8,6 @@ package view.alocacao;
 import DTO.Alocacao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 import view.JFrameRoot;
 import view.Main;
 import view.Menu;

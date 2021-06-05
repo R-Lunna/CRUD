@@ -39,6 +39,8 @@ public class Estado extends Table
 
     public void setCodEst(int codEst)
     {
+        if( lastID != this.codEst )
+            lastID = this.codEst;
         this.codEst = codEst;
     }
 
@@ -89,7 +91,7 @@ public class Estado extends Table
     @Override
     public void delete()
     {
-        try(PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM empregado WHERE codest = ?;"))
+        try(PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM estado WHERE codest = ?;"))
         {
             preparedStatement.setInt(1, codEst);
             preparedStatement.execute();

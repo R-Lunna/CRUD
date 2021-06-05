@@ -45,7 +45,7 @@ public class ViewProjetoInsert extends javax.swing.JFrame {
                 Projeto projeto = new Projeto();
                 
                 projeto.setCodProj(jTextField1.getText());
-                projeto.setNome(jTextField1.getText());
+                projeto.setNome(jTextField2.getText());
                 projeto.setCodeEmp(Integer.parseInt(jTextField3.getText()));
                 
                 projeto.insert();
