@@ -7,6 +7,7 @@ import view.cidade.ViewCidadeInsert;
 import view.alocacao.ViewAlocacaoInsert;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 import view.alocacao.ViewAlocacaoDelete;
 import view.alocacao.ViewAlocacaoRead;
 import view.alocacao.ViewAlocacaoUpdate;
@@ -29,6 +30,8 @@ import view.projeto.ViewProjetoUpdate;
  */
 public class Submenu extends javax.swing.JFrame {
     
+    private JFrame frame = this;
+    
     public Submenu() {
         initComponents();
         back();
@@ -41,20 +44,21 @@ public class Submenu extends javax.swing.JFrame {
         delete(table);
         update(table);
         back();
+        
     }
     
     private void insert(int table) {
         jButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-               setVisible(false);
+              
                
                switch (table) {
-                   case 1: new ViewEmpregadoInsert().setVisible(true); break;
-                   case 2: new ViewCidadeInsert().setVisible(true); break;
-                   case 3: new ViewEstadoInsert().setVisible(true); break;
-                   case 4: new ViewProjetoInsert().setVisible(true); break;
-                   case 5: new ViewAlocacaoInsert().setVisible(true); break;
+                   case 1: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewEmpregadoInsert()); break;
+                   case 2: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewCidadeInsert()); break;
+                   case 3: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewEstadoInsert()); break;
+                   case 4: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewProjetoInsert()); break;
+                   case 5: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewAlocacaoInsert()); break;
                }
             }
         });            
@@ -65,36 +69,32 @@ public class Submenu extends javax.swing.JFrame {
             jButton5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-               setVisible(false);
+              
                
                switch (table) {
-                   case 1: new ViewEmpregadoRead().setVisible(true); break;
-                   case 2: new ViewCidadeRead().setVisible(true); break;
-                   case 3: new ViewEstadoRead().setVisible(true); break;
-                   case 4: new ViewProjetoRead().setVisible(true); break;
-                   case 5: new ViewAlocacaoRead().setVisible(true); break;
+                   case 1: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewEmpregadoRead()); break;
+                   case 2: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewCidadeRead()); break;
+                   case 3: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewEstadoRead()); break;
+                   case 4: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewProjetoRead()); break;
+                   case 5: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewAlocacaoRead()); break;
                }
             }
         });  
     }
-    
-    
-    
-    
     
     private void delete( int table )
     {
             jButton3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-               setVisible(false);
+             
                
                switch(table){
-                case 1: new ViewEmpregadoDelete().setVisible(true); break;
-                case 2: new ViewCidadeDelete().setVisible(true); break;
-                case 3: new ViewEstadoDelete().setVisible(true); break;
-                case 4: new ViewProjetoDelete().setVisible(true); break;
-                case 5: new ViewAlocacaoDelete().setVisible(true); break;
+                case 1: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewEmpregadoDelete()); break;
+                case 2: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewCidadeDelete()); break;
+                case 3: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewEstadoDelete()); break;
+                case 4: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewProjetoDelete()); break;
+                case 5: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewAlocacaoDelete()); break;
                
            }
             }
@@ -106,14 +106,14 @@ public class Submenu extends javax.swing.JFrame {
         jButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-               setVisible(false);
+               
                
                switch(table){
-                case 1: new ViewEmpregadoUpdate().setVisible(true); break;
-                case 2: new ViewCidadeUpdate().setVisible(true); break;
-                case 3: new ViewEstadoUpdate().setVisible(true); break;
-                case 4: new ViewProjetoUpdate().setVisible(true); break;
-                case 5: new ViewAlocacaoUpdate().setVisible(true); break;
+                case 1: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewEmpregadoUpdate()); break;
+                case 2: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewCidadeUpdate()); break;
+                case 3: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewEstadoUpdate()); break;
+                case 4: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewProjetoUpdate()); break;
+                case 5: Main.paintFrame(  new JFrameRoot().getFrame(), new ViewAlocacaoUpdate()); break;
            }
             }
         });  
@@ -123,9 +123,10 @@ public class Submenu extends javax.swing.JFrame {
     private void back() {
         jButton4.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ae) {
-               setVisible(false);
-               new Menu().setVisible(true);
+            public void actionPerformed(ActionEvent ae) 
+            {
+                
+               Main.paintFrame(  new JFrameRoot().getFrame(), new Menu());
             }
         });
     }

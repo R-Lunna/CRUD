@@ -5,8 +5,10 @@
  */
 package view;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 
 /**
  *
@@ -15,6 +17,7 @@ import java.awt.event.ActionListener;
 public class Menu extends javax.swing.JFrame {
     
     private static int table = 0;
+  
     
     /**
      * Creates new form Menu
@@ -37,9 +40,10 @@ public class Menu extends javax.swing.JFrame {
         jButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                setVisible(false);
+
                 table = 1;
-                new Submenu(1).setVisible(true);
+                Main.paintFrame(  new JFrameRoot().getFrame(), new Submenu(1));
+                
             }
         });
     }
@@ -47,10 +51,10 @@ public class Menu extends javax.swing.JFrame {
     private void cidade() {
         jButton2.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ae) {
-                setVisible(false);
+            public void actionPerformed(ActionEvent ae) 
+            {
                 table = 2;
-                new Submenu(2).setVisible(true);
+                Main.paintFrame( new JFrameRoot().getFrame(), new Submenu(2) );
             }
             
         });
@@ -59,10 +63,10 @@ public class Menu extends javax.swing.JFrame {
     private void estado() {
         jButton3.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ae) {
-                setVisible(false);
+            public void actionPerformed(ActionEvent ae) 
+            {
                 table = 3;
-                new Submenu(3).setVisible(true);
+                Main.paintFrame( new JFrameRoot().getFrame(), new Submenu(3) );
             }
 
         });
@@ -72,9 +76,8 @@ public class Menu extends javax.swing.JFrame {
         jButton4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                setVisible(false);
                 table = 4;
-                new Submenu(4).setVisible(true);
+                Main.paintFrame( new JFrameRoot().getFrame(), new Submenu(4) );
             }
             
         });
@@ -84,15 +87,13 @@ public class Menu extends javax.swing.JFrame {
         jButton5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                setVisible(false);
+               
                 table  = 5;
-                new Submenu(5).setVisible(true);
+                Main.paintFrame( new JFrameRoot().getFrame(), new Submenu(5) );
             }
             
         });
     }
-    
-    
     
     
     /**

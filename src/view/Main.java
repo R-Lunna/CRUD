@@ -6,8 +6,10 @@
 package view;
 
 import banco.ConnectionDataBase;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 
 /**
  *
@@ -20,7 +22,20 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        
+        new JFrameRoot().setFrame(this);
         confirm();
+        
+    }
+    
+    public static void paintFrame( JFrame frame, JFrame frame2 )
+    {
+        frame.setSize( frame2.getSize() );
+        frame.getContentPane().removeAll();
+     
+        frame.getContentPane().add(frame2.getContentPane());
+        frame.getContentPane().revalidate();
+        frame.getContentPane().repaint();  
     }
     
     private void confirm() {            
@@ -31,17 +46,13 @@ public class Main extends javax.swing.JFrame {
                 
                 ConnectionDataBase.setUrl( jTextField1.getText() );
                 ConnectionDataBase.setUser( jTextField2.getText() );
-                ConnectionDataBase.setPassword(password);
-               
-                setVisible(false);              
-                new Menu().setVisible(true);              
+                ConnectionDataBase.setPassword(password);  
+                
+                paintFrame( new JFrameRoot().getFrame(), new Menu());
             }         
         });
     }
-            
-            
-            
-            
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,6 +73,7 @@ public class Main extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CRUD");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setText("Insira os seus dados de login do banco");

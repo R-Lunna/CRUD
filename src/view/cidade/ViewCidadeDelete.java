@@ -8,6 +8,8 @@ package view.cidade;
 import DTO.Cidade;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.JFrameRoot;
+import view.Main;
 import view.Menu;
 import view.Submenu;
 
@@ -34,8 +36,8 @@ public class ViewCidadeDelete extends javax.swing.JFrame
         jButton1.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-               setVisible(false);
-               new Submenu(Menu.getTableValue()).setVisible(true);
+              
+                Main.paintFrame( new JFrameRoot().getFrame(), new Submenu(Menu.getTableValue()));
             }    
         });
     }

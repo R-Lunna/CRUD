@@ -8,6 +8,9 @@ package view.alocacao;
 import DTO.Alocacao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import view.JFrameRoot;
+import view.Main;
 import view.Menu;
 import view.Submenu;
 
@@ -17,7 +20,7 @@ import view.Submenu;
  */
 public class ViewAlocacaoDelete extends javax.swing.JFrame
 {
-
+   
     /**
      * Creates new form ViewAlocacaoDelete
      */
@@ -32,8 +35,8 @@ public class ViewAlocacaoDelete extends javax.swing.JFrame
         jButton1.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-               setVisible(false);
-               new Submenu(Menu.getTableValue()).setVisible(true);
+              
+               Main.paintFrame( new JFrameRoot().getFrame(), new Submenu(Menu.getTableValue()));
             }    
         });
     }

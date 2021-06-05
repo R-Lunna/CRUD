@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import view.JFrameRoot;
+import view.Main;
 import view.Menu;
 import view.Submenu;
 
@@ -31,7 +33,7 @@ public class ViewAlocacaoRead extends javax.swing.JFrame
         back();
     }
     
-        private void fillTable()
+    private void fillTable()
     {
         List<Alocacao> alocacaos = new Alocacao().read();
         
@@ -54,8 +56,7 @@ public class ViewAlocacaoRead extends javax.swing.JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                setVisible(false);
-                new Submenu(Menu.getTableValue()).setVisible(true);
+                Main.paintFrame( new JFrameRoot().getFrame(), new Submenu(Menu.getTableValue()));
             }
         });
     }
