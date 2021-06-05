@@ -8,6 +8,7 @@ package view.alocacao;
 import DTO.Alocacao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.Menu;
 import view.Submenu;
 
 /**
@@ -32,7 +33,7 @@ public class ViewAlocacaoDelete extends javax.swing.JFrame
             @Override
             public void actionPerformed(ActionEvent ae) {
                setVisible(false);
-               new Submenu().setVisible(true);
+               new Submenu(Menu.getTableValue()).setVisible(true);
             }    
         });
     }

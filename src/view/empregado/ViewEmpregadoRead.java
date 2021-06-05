@@ -8,10 +8,10 @@ package view.empregado;
 import DTO.Empregado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import view.Menu;
 import view.Submenu;
 
 /**
@@ -55,7 +55,7 @@ public class ViewEmpregadoRead extends javax.swing.JFrame
             public void actionPerformed(ActionEvent e)
             {
                 setVisible(false);
-                new Submenu().setVisible(true);
+                new Submenu(Menu.getTableValue()).setVisible(true);
             }
         });
     }

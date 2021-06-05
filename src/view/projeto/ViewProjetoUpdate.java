@@ -8,6 +8,7 @@ package view.projeto;
 import DTO.Projeto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.Menu;
 import view.Submenu;
 
 /**
@@ -52,7 +53,7 @@ public class ViewProjetoUpdate extends javax.swing.JFrame
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setVisible(false);
-                new Submenu().setVisible(true);
+                new Submenu(Menu.getTableValue()).setVisible(true);
             }
         });
     }

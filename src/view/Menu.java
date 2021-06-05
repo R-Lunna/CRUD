@@ -7,14 +7,15 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 
 /**
  *
  * @author Rafael Luna
  */
 public class Menu extends javax.swing.JFrame {
-
+    
+    private static int table = 0;
+    
     /**
      * Creates new form Menu
      */
@@ -27,11 +28,17 @@ public class Menu extends javax.swing.JFrame {
         alocacao();
     }
     
+    public static int getTableValue()
+    {
+        return table;
+    }
+    
     private void empregado() {
         jButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setVisible(false);
+                table = 1;
                 new Submenu(1).setVisible(true);
             }
         });
@@ -42,6 +49,7 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setVisible(false);
+                table = 2;
                 new Submenu(2).setVisible(true);
             }
             
@@ -53,6 +61,7 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setVisible(false);
+                table = 3;
                 new Submenu(3).setVisible(true);
             }
 
@@ -64,6 +73,7 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setVisible(false);
+                table = 4;
                 new Submenu(4).setVisible(true);
             }
             
@@ -75,6 +85,7 @@ public class Menu extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setVisible(false);
+                table  = 5;
                 new Submenu(5).setVisible(true);
             }
             
